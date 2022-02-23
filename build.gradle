@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.lucene'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    /**
+     * CSV 관련 라이브러리(opencsv)
+     */
+    implementation 'com.opencsv:opencsv:5.5.2'
+
+    /**
+     * 루씬 관련 라이브러리
+     */
+    implementation 'org.apache.lucene:lucene-core:9.0.0'
+    implementation 'org.apache.lucene:lucene-analysis-common:9.0.0'
+    implementation 'org.apache.lucene:lucene-queryparser:9.0.0'
+
+    /**
+     * 노리 라이브러리
+     */
+    implementation 'org.apache.lucene:lucene-analysis-nori:9.0.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
